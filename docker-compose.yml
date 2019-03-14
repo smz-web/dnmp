@@ -1,0 +1,24 @@
+version: "3"
+services:
+  php:
+    # dockerfile src: ./file/php/Dockerfile
+    # cd ./file/php/Dockerfile \
+    # docker build --tag=mz/apache_php:latest .
+    image: php
+    ports:
+      - "8009:80"
+    volumes:
+      - "/c/user/user/docker/config/apache:/usr/local/conf"
+    networks:
+      - webnet
+  nginx:
+    image: nginx
+
+  mysql:
+    image: mysql
+    ports:
+      - "8010:3306"
+    networks:
+      - webnet
+networks:
+  webnet:
